@@ -45,16 +45,13 @@ class HTTPClient(object):
         except:
             # else port 80 is used
             port = 80
-
-        #http://www.pythonforbeginners.com/code-snippets-source-code/python-socket-examples
-        #host=socket.gethostbyname(hostname)
         
         return (host,port)
     def connect(self, host, port):
         try:
             soc=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             soc.connect((host,port))
-            #soc.connect(('',port))
+           
         except socket.error as e:
             print ("failed to create socket")
             print e
@@ -67,10 +64,7 @@ class HTTPClient(object):
 
     def get_headers(self,data):
         data=data.split('\r\n\r\n')
-        #take first, maybe minus last??
-        #build header if here isn't one??
         data=data[0]
-        #data=data-data[-1]
         return data
 
     def get_body(self, data):
